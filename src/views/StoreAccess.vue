@@ -3,7 +3,8 @@
   <p>Count : {{count}}</p>
   <p>cartCount : {{cartCount}}</p>
   <button type="button" @click="increment">Increment</button><br>
-  <button type="button" @click="increment2">Increment2</button>
+  <button type="button" @click="increment2">Increment2</button><br>
+  <button type="button" @click="getFromS">서버로부터</button><br>
   <hr>
   사용자정보 : {{userInfo}} <br>
      ID : {{userInfo.id}} <br>
@@ -28,13 +29,16 @@ export default {
   },
   methods: {
     increment() {
-     this.$store.commit('increment');
+     this.$store.commit('increment',0);
     },
     increment2() {
      this.$store.dispatch('increment',5);
     },
     userInfoInsert() {
       this.$store.commit('user', {"id":"park", "pwd":"1234"})
+    },
+    getFromS() {
+      this.$store.dispatch('getFromServe','test');
     }
   }
 }
